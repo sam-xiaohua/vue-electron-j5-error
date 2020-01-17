@@ -11,6 +11,15 @@ const isDevelopment = process.env.NODE_ENV !== 'production'
 // be closed automatically when the JavaScript object is garbage collected.
 let win
 
+const five = require('johnny-five');
+const board = new five.Board({
+  repl: false,
+  port: 'COM3',
+});
+board.on('ready', function() {
+  console.log('johnny-five');
+});
+
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([{scheme: 'app', privileges: { secure: true, standard: true } }])
 
